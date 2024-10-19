@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc, collection, getFirestore } from "firebase/firestore"; 
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc, getFirestore, getDocs } from "firebase/firestore"; 
 const firebaseConfig = {
   apiKey: "AIzaSyB11cJaXgdf8YMWoiwoT6UFiLoAAqeyGJk",
   authDomain: "chatapp-e50af.firebaseapp.com",
@@ -15,4 +15,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore()
 
-export {app, auth, db, collection, addDoc, collection, getFirestore, getAuth, createUserWithEmailAndPassword }
+export {app, auth, db, getDocs,signInWithEmailAndPassword, collection, addDoc, getFirestore, getAuth, createUserWithEmailAndPassword }
