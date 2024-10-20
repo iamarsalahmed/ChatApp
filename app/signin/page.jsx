@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { app, auth,signInWithEmailAndPassword, db, collection, addDoc, getFirestore, getAuth, createUserWithEmailAndPassword } from '../(database)/firebase-config';
+import {  auth,signInWithEmailAndPassword,  } from '../(database)/firebase-config';
 import { useRouter } from 'next/navigation'
 import '../globals.css';
 import Swal from 'sweetalert2'

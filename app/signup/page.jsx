@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { app, auth, db, collection, addDoc, getFirestore, getAuth, createUserWithEmailAndPassword } from '../(database)/firebase-config';
-import { useRouter } from 'next/router';
+import {  auth, db, collection, addDoc,  createUserWithEmailAndPassword } from '../(database)/firebase-config';
 import '../globals.css';
 import Swal from 'sweetalert2'
 
@@ -23,7 +22,9 @@ const SignUp = () => {
           email,
           userId: user.uid,
         });
+        localStorage.setItem('myId', user.uid)
         console.log("document written with", docs.id)
+        
         setLoading(false);
         await Swal.fire({
           title: "Sign Up Successfull",

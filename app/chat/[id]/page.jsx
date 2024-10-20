@@ -1,15 +1,25 @@
 'use client'
+import { useParams } from 'next/navigation'
 import React, { useState, useEffect } from 'react'
-
+import { app, getDocs,  auth, signInWithEmailAndPassword, db, collection, addDoc, getFirestore, getAuth, createUserWithEmailAndPassword } from '../../(database)/firebase-config';
 const chat = () => {
 
  
   // const [user, setUser] = useState()
   const [message, setMessage] = useState("")
   const [messagestore, setmessageStore] = useState([])
+  const loginUserId = localStorage.getItem('myId')
+  const {id} = useParams()
+  const handleSend =async ()=>{
+    const response = await addDoc(collection(db, "chatRoom"),{
+      senderId : loginUserId,
+      recieverId: id,
+      text: message,
 
-  const handleSend = ()=>{
-    setmessageStore( prev => [...prev, message])
+    })
+    // console.log(docs)
+   
+    // setmessageStore( prev => [...prev, message])
   
     setMessage("")
   }
@@ -17,7 +27,8 @@ const chat = () => {
   return (<>
  <div className="fixed bottom-0 w-full bg-white p-2">
   <div className="flex flex-col space-y-2 mb-16 px-4">
-
+ 
+ 
     <div className="self-start bg-gray-200 text-black p-2 rounded-lg max-w-xs">
       Message from other user
     </div>
